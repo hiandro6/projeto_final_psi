@@ -1,0 +1,22 @@
+{% extends "model.html" %}
+
+{% block title %}
+    Usuários cadastrados
+{% endblock %}
+
+{% block head_extras %}
+<!-- link pro arquivo css  -->
+
+{% endblock %}
+
+{% block content %}
+    {% if users %}
+        {% for user in users %}
+            <ol>
+                <li>{{user}}</li>
+            </ol>
+        {% endfor %}
+    {% else %}
+        <h2>nenhum usuário cadastrado até o momento</h2>
+    {% endif %}
+{% endblock %}

@@ -6,6 +6,7 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 from models.users import User
 
 from database.config import session
+from sqlalchemy import select
 
 
 
@@ -18,6 +19,6 @@ def load_user(user_id):
 user_bp = Blueprint(name='user', import_name=__name__, template_folder='templates', url_prefix='/user')
 
 @user_bp.route('/', methods=['POST', 'GET'])
-@login_required
 def view():
+    users = session.scalars(select(User)).all()
     return render_template('users/view.html', users = users)

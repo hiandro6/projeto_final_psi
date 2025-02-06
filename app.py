@@ -1,4 +1,4 @@
-from Flask import flask
+from flask import Flask
 from database.config import engine
 from database import Base
 from controllers.users import login_manager, user_bp
@@ -17,3 +17,6 @@ with app.app_context():
 
 app.register_blueprint(user_bp)
 
+@app.route("/")
+def index():
+    return "bem vindo ao seu controle de finanças"
